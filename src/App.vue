@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="padre">
+    <MenuSuperior />
+    <MenuInferior />
+    <div class="contenedor">
+      <CardComponente nombre="Lamborghini" kilometraje="1500" />
+      <CardComponente nombre="Porsche" kilometraje="14500" />
+      <CardComponente nombre="Ferrari" kilometraje="22000" />
+      <CardComponente nombre="Toyota" kilometraje="5000" />
+    </div>
+  </div>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import CardComponente from './components/CardComponente.vue'
+import MenuSuperior from './components/MenuSuperior.vue';
+import MenuInferior from './components/MenuInferior.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CardComponente,
+    MenuSuperior,
+    MenuInferior
+    //HelloWorld
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80%;
+  margin: 2rem auto;
+  gap: 20px;
+  padding: 20px;
 }
 </style>
