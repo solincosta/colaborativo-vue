@@ -2,11 +2,14 @@
   <div class="padre">
     <MenuSuperior />
     <MenuInferior />
+    <!-- <MainComponent /> -->
     <div class="contenedor">
-      <CardComponente nombre="Lamborghini" kilometraje="1500" />
-      <CardComponente nombre="Porsche" kilometraje="14500" />
-      <CardComponente nombre="Ferrari" kilometraje="22000" />
-      <CardComponente nombre="Toyota" kilometraje="5000" />
+      <div v-for="carro in carros" :key="carro.id">
+        <CardComponente 
+            :nombre="carro.nombre" 
+            :kilometraje="carro.kilometraje"
+            :imagen="carro.imagen" />
+      </div>
     </div>
   </div>
 
@@ -18,15 +21,44 @@
 import CardComponente from './components/CardComponente.vue'
 import MenuSuperior from './components/MenuSuperior.vue';
 import MenuInferior from './components/MenuInferior.vue';
+// import MainComponent from './components/MainComponent.vue';
 
 export default {
   name: 'App',
+  data(){
+    return{
+      carros: [
+        {id: 1, nombre: 'Lamborghini', kilometraje: 1500, imagen: "lamborghini.jpg"},
+        {id: 2, nombre: 'Porsche', kilometraje: 14500, imagen: 'porsche.jpg'},
+        {id: 3, nombre: 'Ferrari', kilometraje: 22000, imagen: 'ferrari.jpeg'},
+        {id: 4, nombre: 'Toyota', kilometraje: 5000, imagen: 'Toyota-corolla.png'},
+        {id: 5, nombre: 'Chevrolert', kilometraje: 75000, imagen: 'Chevrolet.png'},
+         {id: 6, nombre: 'KIA', kilometraje: 0, imagen: 'kia.png'},
+      ]
+    }
+  },
   components: {
     CardComponente,
     MenuSuperior,
-    MenuInferior
+    MenuInferior,
+    // MainComponent
     //HelloWorld
+  },
+  methods: {
+    imprimirCarros(){
+
+      for(let carro of this.carros){
+        console.log(`El carro ${carro.nombre} tiene un kilometraje de ${carro.kilometraje} km.`);
+      }
+
+    }
+  },
+
+  created(){
+    this.imprimirCarros();
+    
   }
+
 }
 </script>
 
